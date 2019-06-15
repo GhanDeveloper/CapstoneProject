@@ -16,10 +16,10 @@ public class CategoryDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<CategoryEntity> getAllCategories(){
+    public List<CategoryEntity> getAllCategories(String restaurantUuid){
 
         try {
-            return this.entityManager.createNamedQuery("allCategories", CategoryEntity.class).getResultList();
+            return this.entityManager.createNamedQuery("allCategories", CategoryEntity.class).setParameter("uuid", restaurantUuid).getResultList();
         } catch (NoResultException nre) {
             return null;
         }
