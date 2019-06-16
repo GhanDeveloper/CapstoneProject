@@ -16,7 +16,12 @@ public class CategoryService {
     private CategoryDao categoryDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<CategoryEntity> getAllCategories(String restaurantUuid) {
-        return categoryDao.getAllCategories(restaurantUuid);
+    public List<CategoryEntity> getAllCategories() {
+        return categoryDao.getAllCategories();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<CategoryEntity> getCategoriesByRestaurant(String restaurantId) {
+        return categoryDao.getCategoriesByRestaurant(restaurantId);
     }
 }

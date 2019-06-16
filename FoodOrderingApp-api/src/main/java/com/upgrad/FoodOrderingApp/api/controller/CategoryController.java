@@ -36,7 +36,7 @@ public class CategoryController {
 
 
         List<CategoryEntity> categoryEntityList=new ArrayList<CategoryEntity>();
-//        categoryEntityList.addAll(categoryService.getAllCategories());
+          categoryEntityList.addAll(categoryService.getAllCategories());
         List<CategoryListResponse> categoryListResponseList=new ArrayList<CategoryListResponse>();
 
         for (CategoryEntity categoryEntity : categoryEntityList) {
@@ -53,6 +53,6 @@ public class CategoryController {
         return new ResponseEntity<List<CategoryListResponse>>(categoryListResponseList, HttpStatus.OK);
     }
 
-   // @RequestMapping(method = RequestMethod.GET, path = "/category/{category_id}",  produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-   // public ResponseEntity<>
+    //@RequestMapping(method = RequestMethod.GET, path = "/category/{category_id}",  produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    //public ResponseEntity<>
 }
