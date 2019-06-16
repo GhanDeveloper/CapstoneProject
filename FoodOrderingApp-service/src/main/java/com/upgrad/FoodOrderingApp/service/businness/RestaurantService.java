@@ -49,4 +49,18 @@ public class RestaurantService {
 
         return restaurantsByCategoryId;
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<RestaurantEntity> getRestaurantByRestaurantId(String restaurantUuid) throws RestaurantNotFoundException {
+
+        List<RestaurantEntity> restaurantsByCategoryId =  restaurantDao.getRestaurantByRestaurantId(restaurantUuid);
+
+        if (restaurantUuid.isEmpty()) {
+            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+        }else if(restaurantsByCategoryId == null){
+            throw new RestaurantNotFoundException("RNF-001","No restaurant by this id");
+        }
+
+        return restaurantsByCategoryId;
+    }
 }

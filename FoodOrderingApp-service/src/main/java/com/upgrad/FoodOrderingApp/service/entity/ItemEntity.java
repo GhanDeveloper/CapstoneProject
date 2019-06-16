@@ -10,11 +10,18 @@ import java.io.Serializable;
 @Table(
         name = "item"
 )
-/*@NamedQueries({@NamedQuery(
+@NamedQueries({
+        /*@NamedQuery(
         name = "customerByContactNumber",
         query = "select c from CustomerEntity c where c.contactNumber = :contactNumber"
-)
-})*/
+        )*/
+        @NamedQuery(name = "allItemBycategory" , query = "select i from ItemEntity i " +
+                "inner join RestaurantItemEntity ri on i.id = ri.item " +
+                "inner join RestaurantEntity r on ri.restaurant = r.id " +
+                "inner join CategoryItemEntity ci on i.id = ci.item " +
+                "inner join CategoryEntity c on ci.category = c.id where r.id =:restaurantId and c.id =:categoryId order by i.itemName" )
+
+})
 
 public class ItemEntity implements Serializable {
 
